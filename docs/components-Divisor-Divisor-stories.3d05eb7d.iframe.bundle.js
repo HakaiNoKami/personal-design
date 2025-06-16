@@ -1,0 +1,20 @@
+/*! For license information please see components-Divisor-Divisor-stories.3d05eb7d.iframe.bundle.js.LICENSE.txt */
+"use strict";(self.webpackChunkpersonal_design=self.webpackChunkpersonal_design||[]).push([[9315],{"./node_modules/react/cjs/react-jsx-runtime.production.js":(__unused_webpack_module,exports)=>{var REACT_ELEMENT_TYPE=Symbol.for("react.transitional.element"),REACT_FRAGMENT_TYPE=Symbol.for("react.fragment");function jsxProd(type,config,maybeKey){var key=null;if(void 0!==maybeKey&&(key=""+maybeKey),void 0!==config.key&&(key=""+config.key),"key"in config)for(var propName in maybeKey={},config)"key"!==propName&&(maybeKey[propName]=config[propName]);else maybeKey=config;return config=maybeKey.ref,{$$typeof:REACT_ELEMENT_TYPE,type,key,ref:void 0!==config?config:null,props:maybeKey}}exports.Fragment=REACT_FRAGMENT_TYPE,exports.jsx=jsxProd,exports.jsxs=jsxProd},"./node_modules/react/jsx-runtime.js":(module,__unused_webpack_exports,__webpack_require__)=>{module.exports=__webpack_require__("./node_modules/react/cjs/react-jsx-runtime.production.js")},"./src/components/Divisor/Divisor.stories.tsx":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{__webpack_require__.r(__webpack_exports__),__webpack_require__.d(__webpack_exports__,{Default:()=>Default,Recoil:()=>Recoil,Text:()=>Text,__namedExportsOrder:()=>__namedExportsOrder,default:()=>Divisor_stories});var styled_components_browser_esm=__webpack_require__("./node_modules/styled-components/dist/styled-components.browser.esm.js");const DivisorContent=styled_components_browser_esm.Ay.section`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  ${({recoil})=>recoil?styled_components_browser_esm.AH`
+          width: calc(100% + ${2*recoil}rem);
+          margin: 0 -${recoil}rem;
+        `:styled_components_browser_esm.AH`
+          width: 100%;
+          margin: initial;
+        `}
+`,DivisorLine=styled_components_browser_esm.Ay.hr`
+  flex: 1;
+  border: none;
+  border-bottom: 0.1rem solid var(--gray);
+`;var jsx_runtime=__webpack_require__("./node_modules/react/jsx-runtime.js");const Divisor=({children,...args})=>children?(0,jsx_runtime.jsxs)(DivisorContent,{...args,children:[(0,jsx_runtime.jsx)(DivisorLine,{}),(0,jsx_runtime.jsx)("p",{children}),(0,jsx_runtime.jsx)(DivisorLine,{})]}):(0,jsx_runtime.jsx)(DivisorContent,{...args,children:(0,jsx_runtime.jsx)(DivisorLine,{})});try{Divisor.displayName="Divisor",Divisor.__docgenInfo={description:"",displayName:"Divisor",props:{recoil:{defaultValue:null,description:"",name:"recoil",required:!1,type:{name:"number | undefined"}}}},"undefined"!=typeof STORYBOOK_REACT_CLASSES&&(STORYBOOK_REACT_CLASSES["src/components/Divisor/Divisor.tsx#Divisor"]={docgenInfo:Divisor.__docgenInfo,name:"Divisor",path:"src/components/Divisor/Divisor.tsx#Divisor"})}catch(__react_docgen_typescript_loader_error){}const Divisor_stories={title:"Components/Divisor",component:Divisor,tags:["autodocs"],argTypes:{children:{type:"string",control:"text",description:"Texto no centro da divisão"},recoil:{type:"number",control:"number",description:"Valor de recuo da divisão para fora da caixa (padrão: 0rem)"}}},Default={args:{}},Text={args:{children:"Center text"}},Recoil={args:{children:"Center text",recoil:1}},__namedExportsOrder=["Default","Text","Recoil"];Default.parameters={...Default.parameters,docs:{...Default.parameters?.docs,source:{originalSource:"{\n  args: {}\n}",...Default.parameters?.docs?.source}}},Text.parameters={...Text.parameters,docs:{...Text.parameters?.docs,source:{originalSource:'{\n  args: {\n    children: "Center text"\n  }\n}',...Text.parameters?.docs?.source}}},Recoil.parameters={...Recoil.parameters,docs:{...Recoil.parameters?.docs,source:{originalSource:'{\n  args: {\n    children: "Center text",\n    recoil: 1\n  }\n}',...Recoil.parameters?.docs?.source}}}}}]);
+//# sourceMappingURL=components-Divisor-Divisor-stories.3d05eb7d.iframe.bundle.js.map

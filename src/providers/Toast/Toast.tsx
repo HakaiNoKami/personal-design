@@ -7,7 +7,7 @@ import { generateUID } from "utils";
 import type { ToastProviderStyleProps } from "./styles";
 import { Container } from "./styles";
 
-export interface ToastDataProps extends ToastProviderStyleProps {}
+export type ToastDataProps = ToastProviderStyleProps & {};
 
 export interface CreateToastProps extends Omit<ToastProps, "removeMe"> {}
 

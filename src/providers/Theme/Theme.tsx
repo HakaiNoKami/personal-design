@@ -9,12 +9,12 @@ import { createContext, useMemo } from "react";
 
 export interface ThemeContextProps {}
 
-export interface ThemeProviderProps {
+export type ThemeProviderProps = {
   children: ReactNode;
   theme?: "light" | "dark";
   toastConfig: ToastDataProps;
   commonTextConfig: CommonTextDataProps;
-}
+};
 
 const ThemeContext = createContext<ThemeContextProps>({} as ThemeContextProps);
 

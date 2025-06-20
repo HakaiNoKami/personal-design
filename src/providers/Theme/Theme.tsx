@@ -1,20 +1,26 @@
 import { DarkGlobalStyles, LightGlobalStyles } from "global.styles";
-import type { CommonTextDataProps } from "providers/CommonText";
 import { CommonTextProvider } from "providers/CommonText/CommonText";
 import { DialogProvider } from "providers/Dialog/Dialog";
-import type { ToastDataProps } from "providers/Toast";
 import { ToastProvider } from "providers/Toast/Toast";
 import type { ReactNode } from "react";
 import { createContext, useMemo } from "react";
 
 export interface ThemeContextProps {}
 
-export type ThemeProviderProps = {
+export interface ThemeProviderProps {
   children: ReactNode;
   theme?: "light" | "dark";
-  toastConfig: ToastDataProps;
-  commonTextConfig: CommonTextDataProps;
-};
+  toastConfig: {
+    position: "top-left" | "top-right" | "bottom-left" | "bottom-right";
+    reverseOrder?: boolean;
+  };
+  commonTextConfig: {
+    inputFile?: { description: string; button: string };
+    select?: { selectAll: string; noOption: string };
+    table?: { total: string };
+    dialog?: { cancel: string; confirm: string };
+  };
+}
 
 const ThemeContext = createContext<ThemeContextProps>({} as ThemeContextProps);
 

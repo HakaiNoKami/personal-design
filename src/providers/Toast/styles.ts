@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 
-export type ToastProviderStyleProps = {
+export interface ToastProviderStyleProps {
   position: "top-left" | "top-right" | "bottom-left" | "bottom-right";
   reverseOrder?: boolean;
-};
+}
 
 export const Container = styled.div<ToastProviderStyleProps>`
   position: fixed;

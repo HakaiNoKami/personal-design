@@ -7,9 +7,15 @@ import { generateUID } from "utils";
 import type { ToastProviderStyleProps } from "./styles";
 import { Container } from "./styles";
 
-export type ToastDataProps = ToastProviderStyleProps & {};
+export interface ToastDataProps extends ToastProviderStyleProps {}
 
-export interface CreateToastProps extends Omit<ToastProps, "removeMe"> {}
+export interface CreateToastProps {
+  title?: string;
+  description: string;
+  actionText?: string;
+  fixed?: boolean;
+  actionCallback?: () => void;
+}
 
 export interface ToastContextProps {
   success: (args: CreateToastProps) => void;

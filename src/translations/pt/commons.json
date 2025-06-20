@@ -1,0 +1,13 @@
+{
+  "cancel": "Cancelar",
+  "confirm": "Confirmar",
+  "inputFile": {
+    "description": "Arraste e solte os arquivos aqui ou",
+    "button": "Escolha o arquivo"
+  },
+  "select": {
+    "all": "Selecionar todas as opções",
+    "noOption": "Sem opções"
+  },
+  "total": "Total"
+}

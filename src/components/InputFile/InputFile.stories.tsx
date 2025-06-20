@@ -15,16 +15,6 @@ const meta: Meta<typeof InputFile> = {
       control: "text",
       description: "Nome do campo de entrada de arquivos",
     },
-    descriptionText: {
-      type: "string",
-      control: "text",
-      description: "Descrição do campo de entrada de arquivos",
-    },
-    buttonText: {
-      type: "string",
-      control: "text",
-      description: "Texto do bottão que aciona o campo de entrada de arquivos",
-    },
     accept: {
       type: "string",
       control: "text",
@@ -85,9 +75,7 @@ export const Default: Story = {
     );
   },
   args: {
-    name: "Default input file",
-    descriptionText: "Description input file",
-    buttonText: "Button input file",
+    name: "",
     accept: "",
     multiple: false,
     onClick: action("onClick"),
@@ -127,9 +115,7 @@ export const Multiple: Story = {
     );
   },
   args: {
-    name: "Multiple input file",
-    descriptionText: "Description input file",
-    buttonText: "Button input file",
+    name: "",
     accept: "",
     files: [],
     multiple: true,

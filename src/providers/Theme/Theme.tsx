@@ -1,35 +1,37 @@
 import { DarkGlobalStyles, LightGlobalStyles } from "global.styles";
-import { CommonTextProvider } from "providers/CommonText/CommonText";
 import { DialogProvider } from "providers/Dialog/Dialog";
 import { ToastProvider } from "providers/Toast/Toast";
 import type { ReactNode } from "react";
-import { createContext, useMemo } from "react";
-
-export interface ThemeContextProps {}
-
-export interface ThemeProviderProps {
-  children: ReactNode;
+import { createContext, useEffect, useMemo } from "react";
+import { I18nextProvider } from "react-i18next";
+import { i18next } from "translations";
+export interface ThemeConfig {
   theme?: "light" | "dark";
-  toastConfig: {
+  lang?: "pt" | "en" | "es";
+  toastConfig?: {
     position: "top-left" | "top-right" | "bottom-left" | "bottom-right";
     reverseOrder?: boolean;
   };
-  commonTextConfig: {
-    inputFile?: { description: string; button: string };
-    select?: { selectAll: string; noOption: string };
-    table?: { total: string };
-    dialog?: { cancel: string; confirm: string };
-  };
+}
+
+export interface ThemeContextProps {}
+
+export interface ThemeProviderProps extends ThemeConfig {
+  children: ReactNode;
 }
 
 const ThemeContext = createContext<ThemeContextProps>({} as ThemeContextProps);
 
 export const ThemeProvider = ({
   children,
+  lang = "pt",
   theme = "light",
-  toastConfig,
-  commonTextConfig,
+  toastConfig = { position: "bottom-right" },
 }: ThemeProviderProps) => {
+  useEffect(() => {
+    i18next.changeLanguage(lang);
+  }, [lang]);
+
   const globalStyle = useMemo(() => {
     switch (theme) {
       case "dark":
@@ -37,21 +39,16 @@ export const ThemeProvider = ({
       default:
         return <LightGlobalStyles />;
     }
-  }, []);
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{}}>
-      {globalStyle}
-      <CommonTextProvider {...commonTextConfig}>
+      <I18nextProvider i18n={i18next}>
+        {globalStyle}
         <ToastProvider {...toastConfig}>
-          <DialogProvider
-            cancelText={commonTextConfig.dialog?.cancel}
-            confirmText={commonTextConfig.dialog?.confirm}
-          >
-            {children}
-          </DialogProvider>
+          <DialogProvider>{children}</DialogProvider>
         </ToastProvider>
-      </CommonTextProvider>
+      </I18nextProvider>
     </ThemeContext.Provider>
   );
 };

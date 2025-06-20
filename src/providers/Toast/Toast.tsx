@@ -10,11 +10,9 @@ import { Container } from "./styles";
 export interface ToastDataProps extends ToastProviderStyleProps {}
 
 export interface CreateToastProps {
+  fixed?: boolean;
   title?: string;
   description: string;
-  actionText?: string;
-  fixed?: boolean;
-  actionCallback?: () => void;
 }
 
 export interface ToastContextProps {

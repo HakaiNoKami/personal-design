@@ -1,13 +1,11 @@
 import { Chip } from "components/Chip";
-import { useCommonText } from "providers/CommonText";
 import type { ChangeEvent } from "react";
 import { forwardRef, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { CustomButton, HiddenInputFile, InputFileContainer } from "./styles";
 
 export interface InputFileProps {
   name?: string;
-  descriptionText?: string;
-  buttonText?: string;
   accept?: string;
   files?: File[];
   multiple?: boolean;
@@ -18,7 +16,7 @@ export interface InputFileProps {
 
 export const InputFile = forwardRef<HTMLInputElement, InputFileProps>(
   ({ name, files, onClick, onRemove, onChange, ...args }, ref) => {
-    const { inputFile } = useCommonText();
+    const { t } = useTranslation();
 
     const details = useMemo(() => {
       switch (true) {
@@ -31,15 +29,15 @@ export const InputFile = forwardRef<HTMLInputElement, InputFileProps>(
         case !!name:
           return <p>{name}</p>;
         default:
-          return <p>{args.descriptionText ?? inputFile?.description ?? ""}</p>;
+          return <p>{t("inputFile.description")}</p>;
       }
-    }, [name, files, onRemove]);
+    }, [name, files, onRemove, t]);
 
     return (
       <InputFileContainer>
         <div>{details}</div>
         <CustomButton bordered onClick={onClick}>
-          {args.buttonText ?? inputFile?.button ?? ""}
+          {t("inputFile.button")}
         </CustomButton>
         <HiddenInputFile
           ref={ref}

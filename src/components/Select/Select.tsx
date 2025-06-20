@@ -1,7 +1,6 @@
 import type { OptionProps, OptionValue } from "components/Option";
 import { NoOption } from "components/Option";
 import { useMap } from "hooks";
-import { useCommonText } from "providers/CommonText";
 import type { ReactNode } from "react";
 import {
   Children,
@@ -13,6 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useTranslation } from "react-i18next";
 import { exitElement } from "utils";
 import type { SelectStyleProps } from "./styles";
 import {
@@ -27,7 +27,6 @@ import {
 export interface SelectProps extends Omit<SelectStyleProps, "open"> {
   children: ReactNode;
   placeholder?: string;
-  noOptionText?: string;
   defaultValue?: OptionValue;
   value?: OptionValue;
   hasClear?: boolean;
@@ -50,7 +49,7 @@ export const Select = ({
   const [open, setOpen] = useState(false);
   const [internalValue, setInternalValue] = useState<OptionValue>(defaultValue);
   const [texts, { set }] = useMap<OptionValue, ReactNode>();
-  const { select } = useCommonText();
+  const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const filterRef = useRef<HTMLInputElement>(null);
 
@@ -169,7 +168,7 @@ export const Select = ({
         {filteredOptions?.length ? (
           filteredOptions
         ) : (
-          <NoOption text={args.noOptionText ?? select?.noOption ?? ""} />
+          <NoOption text={t("select.noOption")} />
         )}
       </OptionsContent>
     </Container>

@@ -38,11 +38,7 @@ type Story = StoryObj<typeof MultiOption>;
 export const Default: Story = {
   render: (args) => {
     return (
-      <MultiSelect
-        fullWidth
-        placeholder="Select options"
-        selectAllText="Select all options"
-      >
+      <MultiSelect fullWidth placeholder="Select options">
         <MultiOption {...args} />
       </MultiSelect>
     );

@@ -24,16 +24,6 @@ const meta: Meta<typeof Dialog> = {
       control: "text",
       description: "Descrição do dialog",
     },
-    cancelText: {
-      type: "string",
-      control: "text",
-      description: "Texto do botão de cancelamento do dialog",
-    },
-    confirmText: {
-      type: "string",
-      control: "text",
-      description: "Texto do botão de confirmação do dialog",
-    },
     confirmColor: {
       control: "select",
       options: ["default", "success", "danger", "link"],
@@ -86,8 +76,6 @@ export const Default: Story = {
     show: false,
     title: "Title dialog",
     description: "Description dialog",
-    cancelText: "Cancel",
-    confirmText: "Confirm",
     confirmColor: "danger",
   },
 };

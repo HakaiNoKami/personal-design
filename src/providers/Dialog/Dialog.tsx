@@ -1,4 +1,4 @@
-import type { ButtonVariant } from "components/Button";
+import { ButtonVariant } from "components";
 import { Dialog } from "components/Dialog";
 import type { ReactNode } from "react";
 import { createContext, useCallback, useContext, useState } from "react";
@@ -6,9 +6,6 @@ import { createContext, useCallback, useContext, useState } from "react";
 export interface DialogDataProps {
   title: string;
   description: string;
-  cancelText?: string;
-  confirmText?: string;
-  confirmColor?: ButtonVariant;
   callback: () => void | Promise<void>;
 }
 
@@ -18,21 +15,21 @@ export interface DialogContextProps {
 
 export interface DialogProviderProps {
   children: ReactNode;
-  cancelText?: string;
-  confirmText?: string;
 }
 
 const DialogContext = createContext<DialogContextProps>(
   {} as DialogContextProps
 );
 
-export const DialogProvider = ({ children, ...args }: DialogProviderProps) => {
+export const DialogProvider = ({ children }: DialogProviderProps) => {
   const [open, setOpen] = useState(false);
+  const [confirmColor, setConfirmColor] = useState<ButtonVariant>("default");
   const [data, setData] = useState<DialogDataProps>();
 
   const confirm = useCallback((data: DialogDataProps) => {
-    setData(data);
     setOpen(true);
+    setData(data);
+    setConfirmColor("default");
   }, []);
 
   const handleClose = useCallback(() => {
@@ -54,10 +51,8 @@ export const DialogProvider = ({ children, ...args }: DialogProviderProps) => {
           title={data?.title}
           onCancel={handleClose}
           onConfirm={handleConfirm}
+          confirmColor={confirmColor}
           description={data?.description}
-          confirmColor={data?.confirmColor}
-          cancelText={data?.cancelText ?? args.cancelText}
-          confirmText={data?.confirmText ?? args.confirmText}
         />
       )}
     </DialogContext.Provider>

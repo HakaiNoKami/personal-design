@@ -1,7 +1,7 @@
 import type { ButtonVariant } from "components/Button";
 import { Button } from "components/Button";
 import { Modal } from "components/Modal";
-import { useCommonText } from "providers/CommonText";
+import { useTranslation } from "react-i18next";
 import {
   DialogModalFooter,
   DialogModalHeader,
@@ -12,8 +12,6 @@ export interface DialogProps {
   show: boolean;
   title: string;
   description: string;
-  cancelText?: string;
-  confirmText?: string;
   confirmColor?: ButtonVariant;
   onCancel: () => void;
   onConfirm: () => void;
@@ -24,12 +22,10 @@ export const Dialog = ({
   title,
   description,
   confirmColor = "danger",
-  cancelText,
-  confirmText,
   onCancel,
   onConfirm,
 }: DialogProps) => {
-  const { dialog } = useCommonText();
+  const { t } = useTranslation();
 
   return (
     <Modal show={show}>
@@ -39,10 +35,10 @@ export const Dialog = ({
       </DialogModalMain>
       <DialogModalFooter>
         <Button outlined onClick={onCancel}>
-          {cancelText ?? dialog?.cancel ?? ""}
+          {t("cancel")}
         </Button>
         <Button variant={confirmColor} onClick={onConfirm}>
-          {confirmText ?? dialog?.confirm ?? ""}
+          {t("confirm")}
         </Button>
       </DialogModalFooter>
     </Modal>

@@ -5,7 +5,6 @@ import type {
 } from "components/MultiOption";
 import { SelectAllOption } from "components/MultiOption";
 import { NoOption } from "components/Option";
-import { useCommonText } from "providers/CommonText";
 import type { ReactNode } from "react";
 import {
   Children,
@@ -17,6 +16,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useTranslation } from "react-i18next";
 import { exitElement } from "utils";
 import type { MultiSelectStyleProps } from "./styles";
 import {
@@ -31,8 +31,6 @@ import {
 export interface MultiSelectProps extends Omit<MultiSelectStyleProps, "open"> {
   children: ReactNode;
   placeholder?: string;
-  selectAllText?: string;
-  noOptionText?: string;
   defaultValue?: MultiOptionValue[];
   value?: MultiOptionValue[];
   showChips?: boolean;
@@ -58,7 +56,7 @@ export const MultiSelect = ({
   const [internalValue, setInternalValue] = useState<Set<MultiOptionValue>>(
     new Set(defaultValue)
   );
-  const { select } = useCommonText();
+  const { t } = useTranslation();
   const ref = useRef<HTMLButtonElement>(null);
   const filterRef = useRef<HTMLInputElement>(null);
 
@@ -183,14 +181,11 @@ export const MultiSelect = ({
         <OptionsContent open={open} direction={args.direction}>
           {filteredOptions?.length ? (
             <>
-              <SelectAllOption
-                onClick={onSelectAll}
-                text={args.selectAllText ?? select?.selectAll ?? ""}
-              />
+              <SelectAllOption onClick={onSelectAll} text={t("select.all")} />
               {filteredOptions}
             </>
           ) : (
-            <NoOption text={args.noOptionText ?? select?.noOption ?? ""} />
+            <NoOption text={t("select.noOption")} />
           )}
         </OptionsContent>
       </MultiSelectContent>

@@ -1,23 +1,20 @@
-import { useCommonText } from "providers/CommonText";
+import { useTranslation } from "react-i18next";
 import type { TFooterStyleProps } from "./styles";
 import { Container } from "./styles";
 
 export interface TFooterProps extends TFooterStyleProps {
   count: number;
-  totalText?: string;
 }
 
 const maxColSpan = 100;
 
-export const TFooter = ({ count, totalText, ...args }: TFooterProps) => {
-  const { table } = useCommonText();
+export const TFooter = ({ count, ...args }: TFooterProps) => {
+  const { t } = useTranslation();
 
   return (
     <Container {...args}>
       <tr>
-        <td colSpan={maxColSpan}>{`${
-          totalText ?? table?.total ?? ""
-        }: ${count}`}</td>
+        <td colSpan={maxColSpan}>{`${t("total")}: ${count}`}</td>
       </tr>
     </Container>
   );

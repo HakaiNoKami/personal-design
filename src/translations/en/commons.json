@@ -1,0 +1,13 @@
+{
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "inputFile": {
+    "description": "Drag and drop files here or",
+    "button": "Choose the file"
+  },
+  "select": {
+    "all": "Select all options",
+    "noOption": "No options"
+  },
+  "total": "Total"
+}

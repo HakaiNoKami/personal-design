@@ -18,11 +18,6 @@ const meta: Meta<typeof TFooter> = {
       description:
         "Valor total de quantas linhas/tuplas estão sendo exibidas na tabela",
     },
-    totalText: {
-      type: "string",
-      control: "text",
-      description: "Texto do valor total de linhas/tuplas",
-    },
     recoil: {
       type: "number",
       control: "number",
@@ -74,7 +69,6 @@ export const Default: Story = {
   },
   args: {
     count: 3,
-    totalText: "Total lines",
     recoil: 0,
   },
 };

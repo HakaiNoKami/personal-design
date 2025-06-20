@@ -19,17 +19,6 @@ const meta: Meta<typeof MultiSelect> = {
       description:
         "Texto de placeholder exibido quando valor do seletor multiplo for vazio",
     },
-    selectAllText: {
-      type: "string",
-      control: "text",
-      description:
-        "Texto da opção que seleciona ou desseleciona todas as opções",
-    },
-    noOptionText: {
-      type: "string",
-      control: "text",
-      description: "Texto de aviso que o seletor não tem opções",
-    },
     defaultValue: {
       description:
         "Lista de valores iniciais selecionados (caso não queira controlar o seletor multiplo)",
@@ -95,8 +84,6 @@ export const Uncontrolled: Story = {
   },
   args: {
     placeholder: "Uncontrolled multi select",
-    selectAllText: "Select all",
-    noOptionText: "No options available",
     defaultValue: [1],
     showChips: true,
     readOnly: false,
@@ -134,8 +121,6 @@ export const Controlled: Story = {
   },
   args: {
     placeholder: "Controlled multi select",
-    selectAllText: "Select all",
-    noOptionText: "No options available",
     value: [3, 5],
     showChips: true,
     readOnly: false,
@@ -151,8 +136,6 @@ export const NoOptions: Story = {
   args: {
     children: "",
     placeholder: "No Options multi select",
-    selectAllText: "Select all",
-    noOptionText: "No options available",
     showChips: true,
     readOnly: false,
     onChange: action("onChange"),
